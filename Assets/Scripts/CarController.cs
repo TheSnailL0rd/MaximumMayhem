@@ -66,12 +66,8 @@ public class CarController : MonoBehaviour
 
     private void ApplyBraking()
     {
-        FLWheelCol.brakeTorque = currentBrakeForce;
-        FRWheelCol.brakeTorque = currentBrakeForce;
-        BLWheelCol.brakeTorque = currentBrakeForce;
-        BRWheelCol.brakeTorque = currentBrakeForce;
-        FLWheelCol.motorTorque = 0f;
-        FRWheelCol.motorTorque = 0f;
+        FLWheelCol.motorTorque = -motorForce;
+        FRWheelCol.motorTorque = -motorForce;
     }
 
     private void UpdateWheels()
