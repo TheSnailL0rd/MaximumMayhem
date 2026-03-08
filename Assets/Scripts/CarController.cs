@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class CarController : MonoBehaviour
 {
     private Vector2 movement;
+    [SerializeField] private Animator anim;
 
     public bool accelerating;
     public bool braking;
@@ -106,5 +107,13 @@ public class CarController : MonoBehaviour
         wc.GetWorldPose(out pos, out rot);
         wt.rotation = Quaternion.Slerp(wt.rotation, rot, 0.3f);
         wt.position = pos;
+    }
+
+    public void Shoot(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            anim.SetBool("Shooting", true);
+        if (context.canceled)
+            anim.SetBool("Shooting", false);
     }
 }
